@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vineet Joshi. All rights reserved.
 //
 
+//  3D Model retrieved from: https://poly.google.com/view/7Q_Ab2HLll1
+
 import UIKit
 import SceneKit
 import ARKit
@@ -23,8 +25,25 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        // Improves the lighting of the sceneView
+        sceneView.autoenablesDefaultLighting = true
+        
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
+        
+        guard let couchScene = SCNScene(named: "art.scnassets/couch.dae") else {
+            print("couchScene was not able to be initialized!")
+            return
+        }
+        
+        guard let couchNode = couchScene.rootNode.childNode(withName: "couchModel", recursively: true) else {
+            print("couchNode was not able to be initialized!")
+            return
+        }
+        // Sets the position of the couchNode (x,y,z), where z=-1 means 1 meter AWAY from us
+        couchNode.position = SCNVector3(0, 0, -1)
+        
+        scene.rootNode.addChildNode(couchNode)
         
         // Set the scene to the view
         sceneView.scene = scene
