@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2019-11-21T18:28:32Z</created>
-  <modified>2019-11-21T18:28:32Z</modified>
+  <created>2019-11-22T22:03:42Z</created>
+  <modified>2019-11-22T22:03:42Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -169,7 +169,7 @@
  <library_visual_scenes>
   <visual_scene id="scene8">
    <node id="model_001" name="couchModel">
-    <matrix>-0.9396925 -0.3420202 0 0 0 5.960464e-08 -0.9999999 0 0.3420202 -0.9396926 5.960464e-08 0 0 0 0 1 </matrix>
+    <matrix>-0.7047695 -0.2565151 3.352761e-08 0 -1.117587e-08 -8.940697e-08 -0.7500001 0 0.2565151 -0.7047695 4.470348e-08 0 0 0 0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>
       <technique_common>
