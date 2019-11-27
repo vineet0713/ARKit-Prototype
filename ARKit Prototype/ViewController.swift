@@ -13,8 +13,10 @@ import SceneKit
 import ARKit
 
 class ViewController: UIViewController, ARSCNViewDelegate {
-
+    
     @IBOutlet var sceneView: ARSCNView!
+    
+    var planes = [UUID : VirtualPlane]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,25 +30,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Improves the lighting of the sceneView
         sceneView.autoenablesDefaultLighting = true
         
+        // Sets debug options on the sceneView
+        let debugValue: UInt = ARSCNDebugOptions.showWorldOrigin.rawValue | ARSCNDebugOptions.showFeaturePoints.rawValue
+        sceneView.debugOptions = SCNDebugOptions(rawValue: debugValue)
+        
         // Create a new scene
         let scene = SCNScene()
         
-        guard let couchScene = SCNScene(named: "art.scnassets/couch.dae") else {
-            print("couchScene was not able to be initialized!")
-            return
-        }
-        
-        guard let couchNode = couchScene.rootNode.childNode(withName: "couchModel", recursively: true) else {
-            print("couchNode was not able to be initialized!")
-            return
-        }
-        // Sets the position of the couchNode (x,y,z), where z=-1 means 1 meter AWAY from us
-        couchNode.position = SCNVector3(0, 0, -1)
-        
-        scene.rootNode.addChildNode(couchNode)
-        
         // Set the scene to the view
         sceneView.scene = scene
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(addCouchToSceneView(withGestureRecognizer:)))
+        sceneView.addGestureRecognizer(recognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +49,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        configuration.planeDetection = .horizontal
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -65,30 +61,69 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
-
+    
+    @objc func addCouchToSceneView(withGestureRecognizer recognizer: UIGestureRecognizer) {
+        let tapLocation = recognizer.location(in: sceneView)
+        let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        
+        guard let hitTestResult = hitTestResults.first else {
+            print("hitTestResult was not able to be initialized!")
+            return
+        }
+        let translation = hitTestResult.worldTransform.columns.3
+        let x = translation.x
+        let y = translation.y
+        let z = translation.z
+        
+        guard let couchScene = SCNScene(named: "art.scnassets/couch.dae") else {
+            print("couchScene was not able to be initialized!")
+            return
+        }
+        
+        guard let couchNode = couchScene.rootNode.childNode(withName: "couchModel", recursively: true) else {
+            print("couchNode was not able to be initialized!")
+            return
+        }
+        couchNode.position = SCNVector3(x,y,z)
+        couchNode.scale = SCNVector3(0.75, 0.75, 0.75)
+        sceneView.scene.rootNode.addChildNode(couchNode)
+    }
+    
     // MARK: - ARSCNViewDelegate
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let arPlaneAnchor = anchor as? ARPlaneAnchor else {
+            print("arPlaneAnchor was not able to be initialized!")
+            return
+        }
+        let plane = VirtualPlane(anchor: arPlaneAnchor)
+        self.planes[arPlaneAnchor.identifier] = plane
+        node.addChildNode(plane)
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let arPlaneAnchor = anchor as? ARPlaneAnchor else {
+            print("arPlaneAnchor was not able to be initialized!")
+            return
+        }
+        guard let plane = planes[arPlaneAnchor.identifier] else {
+            print("plane was not able to be initialized!")
+            return
+        }
+        plane.updateWithNewAnchor(arPlaneAnchor)
     }
     
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        guard let arPlaneAnchor = anchor as? ARPlaneAnchor else {
+            print("arPlaneAnchor was not able to be initialized!")
+            return
+        }
+        guard let index = planes.index(forKey: arPlaneAnchor.identifier) else {
+            print("index was not able to be initialized!")
+            return
+        }
+        planes.remove(at: index)
+        sceneView.scene.rootNode.removeAllActions()
     }
+    
 }

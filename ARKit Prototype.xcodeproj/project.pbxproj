@@ -13,6 +13,7 @@
 		65198B8323870C900063EC65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65198B8123870C900063EC65 /* Main.storyboard */; };
 		65198B8523870C920063EC65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65198B8423870C920063EC65 /* Assets.xcassets */; };
 		65198B8823870C920063EC65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65198B8623870C920063EC65 /* LaunchScreen.storyboard */; };
+		65FC1B01238F0B3A009A7D4A /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC1B00238F0B3A009A7D4A /* VirtualPlane.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		65198B8423870C920063EC65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65198B8723870C920063EC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65198B8923870C920063EC65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65FC1B00238F0B3A009A7D4A /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				65198B7B23870C900063EC65 /* AppDelegate.swift */,
 				65198B7D23870C900063EC65 /* art.scnassets */,
 				65198B7F23870C900063EC65 /* ViewController.swift */,
+				65FC1B00238F0B3A009A7D4A /* VirtualPlane.swift */,
 				65198B8123870C900063EC65 /* Main.storyboard */,
 				65198B8423870C920063EC65 /* Assets.xcassets */,
 				65198B8623870C920063EC65 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			files = (
 				65198B8023870C900063EC65 /* ViewController.swift in Sources */,
 				65198B7C23870C900063EC65 /* AppDelegate.swift in Sources */,
+				65FC1B01238F0B3A009A7D4A /* VirtualPlane.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
