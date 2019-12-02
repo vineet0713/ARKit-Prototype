@@ -44,6 +44,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(addCouchToSceneView(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(recognizer)
         
+        //Download the couch file from Firebase, confirm that the firm is downloaded successfully
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let documentsURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -91,8 +92,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
 //        let storage = Storage.storage()
 //        let storageRef = storage.reference()
-        let documentsURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let sceneURL = documentsURL.appendingPathComponent("couch_local.dae")
+        
 //        let fileManager = FileManager.default
 //        let documentDir = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 //        let localURL = documentDir.appendingPathComponent("art.scnassets/couch_local.dae")
@@ -103,7 +103,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //            print("Download success")
 //        }
         
-        print(sceneURL.absoluteString)
+        
+        let documentsURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let sceneURL = documentsURL.appendingPathComponent("couch_local.dae")
+//        print(sceneURL.absoluteString)
         
         if FileManager.default.fileExists(atPath: sceneURL.path) {
             print("FILE AVAILABLE")
