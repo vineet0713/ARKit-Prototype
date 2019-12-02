@@ -11,6 +11,7 @@
 import UIKit
 import SceneKit
 import ARKit
+import FirebaseStorage
 
 class ViewController: UIViewController, ARSCNViewDelegate {
     
@@ -42,6 +43,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(addCouchToSceneView(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(recognizer)
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let documentsURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let sceneURL = documentsURL.appendingPathComponent("couch_local.dae")
+        print(sceneURL.absoluteString)
+
+        let downloadTask = storageRef.child("art.scnassets/couch.dae").write(toFile: sceneURL)
+        downloadTask.observe(.success) { snapshot in
+            // Download completed successfully
+            print("Download success")
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,8 +88,36 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let x = translation.x
         let y = translation.y
         let z = translation.z
+            
+//        let storage = Storage.storage()
+//        let storageRef = storage.reference()
+        let documentsURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+        let sceneURL = documentsURL.appendingPathComponent("couch_local.dae")
+//        let fileManager = FileManager.default
+//        let documentDir = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+//        let localURL = documentDir.appendingPathComponent("art.scnassets/couch_local.dae")
+//        let downloadTask = storageRef.child("art.scnassets/couch.dae").write(toFile: sceneURL)
         
-        guard let couchScene = SCNScene(named: "art.scnassets/couch.dae") else {
+//        downloadTask.observe(.success) { snapshot in
+//          // Download completed successfully
+//            print("Download success")
+//        }
+        
+        print(sceneURL.absoluteString)
+        
+        if FileManager.default.fileExists(atPath: sceneURL.path) {
+            print("FILE AVAILABLE")
+        } else {
+            print("FILE NOT AVAILABLE")
+        }
+        
+//        let attribute = try! FileManager.default.attributesOfItem(atPath: sceneURL.path)
+//        if let size = attribute[FileAttributeKey.size] as? NSNumber {
+//            print(size.doubleValue / 1000000.0)
+//        }
+        
+        
+        guard let couchScene = SCNScene(named: sceneURL.absoluteString) else {
             print("couchScene was not able to be initialized!")
             return
         }

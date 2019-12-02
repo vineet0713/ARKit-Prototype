@@ -1,0 +1,6 @@
+framework module Pods_ARKit_Prototype {
+  umbrella header "Pods-ARKit Prototype-umbrella.h"
+
+  export *
+  module * { export * }
+}

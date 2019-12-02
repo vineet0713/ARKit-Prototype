@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>368109696933-4ba0hmssmu39a31245950e1akm44qact.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.368109696933-4ba0hmssmu39a31245950e1akm44qact</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDXfc4LkGQwuN04FEnvN5sxJ1b263mcyZs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>368109696933</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>tiantian0627.ARKit-Prototype</string>
+	<key>PROJECT_ID</key>
+	<string>furniture-visualizer-capstone</string>
+	<key>STORAGE_BUCKET</key>
+	<string>furniture-visualizer-capstone.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:368109696933:ios:393c0f0957c6231285da4c</string>
+	<key>DATABASE_URL</key>
+	<string>https://furniture-visualizer-capstone.firebaseio.com</string>
+</dict>
+</plist>

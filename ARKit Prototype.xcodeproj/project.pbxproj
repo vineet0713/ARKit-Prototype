@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,9 +14,12 @@
 		65198B8523870C920063EC65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65198B8423870C920063EC65 /* Assets.xcassets */; };
 		65198B8823870C920063EC65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65198B8623870C920063EC65 /* LaunchScreen.storyboard */; };
 		65FC1B01238F0B3A009A7D4A /* VirtualPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FC1B00238F0B3A009A7D4A /* VirtualPlane.swift */; };
+		C33C0CDF57AAA4E410AF9438 /* Pods_ARKit_Prototype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CAF03707E8186A9ACD7A16 /* Pods_ARKit_Prototype.framework */; };
+		CB44EF4B239334ED00E4AFEA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB44EF4A239334ED00E4AFEA /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03CAF03707E8186A9ACD7A16 /* Pods_ARKit_Prototype.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARKit_Prototype.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65198B7823870C900063EC65 /* ARKit Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ARKit Prototype.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		65198B7B23870C900063EC65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65198B7D23870C900063EC65 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -26,6 +29,9 @@
 		65198B8723870C920063EC65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		65198B8923870C920063EC65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65FC1B00238F0B3A009A7D4A /* VirtualPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualPlane.swift; sourceTree = "<group>"; };
+		71D3042831E7D740D54C95EA /* Pods-ARKit Prototype.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKit Prototype.release.xcconfig"; path = "Target Support Files/Pods-ARKit Prototype/Pods-ARKit Prototype.release.xcconfig"; sourceTree = "<group>"; };
+		CB44EF4A239334ED00E4AFEA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F2338E3ED8E91A9D3F2FB6EB /* Pods-ARKit Prototype.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARKit Prototype.debug.xcconfig"; path = "Target Support Files/Pods-ARKit Prototype/Pods-ARKit Prototype.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C33C0CDF57AAA4E410AF9438 /* Pods_ARKit_Prototype.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AFE97CED8AC46B583168189 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03CAF03707E8186A9ACD7A16 /* Pods_ARKit_Prototype.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4C7F208DC82822D65EA675FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2338E3ED8E91A9D3F2FB6EB /* Pods-ARKit Prototype.debug.xcconfig */,
+				71D3042831E7D740D54C95EA /* Pods-ARKit Prototype.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		65198B6F23870C8F0063EC65 = {
 			isa = PBXGroup;
 			children = (
 				65198B7A23870C900063EC65 /* ARKit Prototype */,
 				65198B7923870C900063EC65 /* Products */,
+				4C7F208DC82822D65EA675FD /* Pods */,
+				2AFE97CED8AC46B583168189 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +84,7 @@
 		65198B7A23870C900063EC65 /* ARKit Prototype */ = {
 			isa = PBXGroup;
 			children = (
+				CB44EF4A239334ED00E4AFEA /* GoogleService-Info.plist */,
 				65198B7B23870C900063EC65 /* AppDelegate.swift */,
 				65198B7D23870C900063EC65 /* art.scnassets */,
 				65198B7F23870C900063EC65 /* ViewController.swift */,
@@ -77,9 +104,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65198B8C23870C920063EC65 /* Build configuration list for PBXNativeTarget "ARKit Prototype" */;
 			buildPhases = (
+				D3114E444FC386B1D39BC01B /* [CP] Check Pods Manifest.lock */,
 				65198B7423870C8F0063EC65 /* Sources */,
 				65198B7523870C8F0063EC65 /* Frameworks */,
 				65198B7623870C8F0063EC65 /* Resources */,
+				FC9D3F6AF9854FE8818A5C25 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,12 +159,55 @@
 			files = (
 				65198B7E23870C900063EC65 /* art.scnassets in Resources */,
 				65198B8823870C920063EC65 /* LaunchScreen.storyboard in Resources */,
+				CB44EF4B239334ED00E4AFEA /* GoogleService-Info.plist in Resources */,
 				65198B8523870C920063EC65 /* Assets.xcassets in Resources */,
 				65198B8323870C900063EC65 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D3114E444FC386B1D39BC01B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARKit Prototype-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC9D3F6AF9854FE8818A5C25 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ARKit Prototype/Pods-ARKit Prototype-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ARKit Prototype/Pods-ARKit Prototype-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ARKit Prototype/Pods-ARKit Prototype-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		65198B7423870C8F0063EC65 /* Sources */ = {
@@ -286,16 +358,18 @@
 		};
 		65198B8D23870C920063EC65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2338E3ED8E91A9D3F2FB6EB /* Pods-ARKit Prototype.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C9R438Z887;
+				DEVELOPMENT_TEAM = UHN9GGJM9D;
 				INFOPLIST_FILE = "ARKit Prototype/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "vineet0713.ARKit-Prototype";
+				PRODUCT_BUNDLE_IDENTIFIER = "tiantian0627.ARKit-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -304,16 +378,18 @@
 		};
 		65198B8E23870C920063EC65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71D3042831E7D740D54C95EA /* Pods-ARKit Prototype.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C9R438Z887;
+				DEVELOPMENT_TEAM = UHN9GGJM9D;
 				INFOPLIST_FILE = "ARKit Prototype/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "vineet0713.ARKit-Prototype";
+				PRODUCT_BUNDLE_IDENTIFIER = "tiantian0627.ARKit-Prototype";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
